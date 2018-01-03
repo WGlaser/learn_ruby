@@ -6,7 +6,7 @@ def translate(str)
 		if (VOWELS.include?(word[0])) #vowel
 			temp = oneVowel(word)
 		end
-		if(!VOWELS.include?(word[0])) #one consonant
+		if(!VOWELS.include?(word[0]) && word[1..2] != "qu") #one consonant
 			temp = oneConsonant(word)
 		end
 		if(!VOWELS.include?(word[0]) && !VOWELS.include?(word[1])) #two consonants
@@ -17,6 +17,9 @@ def translate(str)
 		end
 		if(word[0..1] == "qu")
 			temp = twoConsonants(word)
+		end
+		if(!VOWELS.include?(word[0]) && word[1..2] == "qu")
+			temp = threeConsonants(word)
 		end
 		
 		answer = answer + " " + temp
